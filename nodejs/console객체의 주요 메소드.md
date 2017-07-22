@@ -12,9 +12,9 @@
 
 + 예제:[ch02_test1.js][https://github.com/Hongsomang/TIL/blob/master/nodejs/ch02_test1.js]
 
-  결과:![time&timeEnd](./img/timejs.PNG)
+  결과:![time&timeEnd](https://raw.githubusercontent.com/Hongsomang/TIL/master/img/timejs.PNG)
 
-  ​	 ![dir](./img/dir.PNG)
+  ​	 ![dir](https://raw.githubusercontent.com/Hongsomang/TIL/master/img/dir.PNG)
 
-  ​	![__filename&__dirname](./img/__filename&__dirname.PNG)
+  ​	![__filename&__dirname](https://raw.githubusercontent.com/Hongsomang/TIL/master/img/__filename%26__dirname.PNG)
 
