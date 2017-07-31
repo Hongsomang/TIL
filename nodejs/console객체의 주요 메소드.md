@@ -18,6 +18,14 @@
 
 ​		![__filename&__dirname](https://raw.githubusercontent.com/Hongsomang/TIL/master/img/__filename%26__dirname.PNG)
 
++dir()메소드
+
+​	-객체 안에 들어 있는 속정들을 확인
+
+​	```var Person={name:'소녀시대',age:18};```
+
+​	```console.dir(Person);```
+
 + 예제:[ch02_test1.js][https://github.com/Hongsomang/TIL/blob/master/nodejs/ch02_test1.js]
 
   ​	 
