@@ -1,0 +1,3 @@
+name:hongosmang 
+ age:18 
+ phone:010-1010
