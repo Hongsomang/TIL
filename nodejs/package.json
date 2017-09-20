@@ -12,6 +12,7 @@
     "express-error-handler": "^1.1.0",
     "express-session": "^1.15.5",
     "http": "0.0.0",
+    "jade": "^1.11.0",
     "mysql": "^2.14.1",
     "nconf": "^0.8.4",
     "path": "^0.12.7",
