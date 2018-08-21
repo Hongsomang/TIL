@@ -66,6 +66,11 @@ appp.post('./forget_pw',function(req,res){
         }
  });
 });
+appp.post('/diary/add',function (req,res) {
+    console.log("실행");
+    console.log(req.body.pwd);
+
+})
 appp.listen(appp.get('port'), function () {
   console.log('Express server listening on port ' + appp.get('port'));
     
