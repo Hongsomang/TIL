@@ -66,4 +66,4 @@ http://limkydev.tistory.com/32
 
 http://gpark.tistory.com/7
 
-http://apponline.tistory.com/entry/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CAndroid-%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-Activity-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0
+http://apponline.tistory.com/entry/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9CAndroid-%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-Activity-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0	
