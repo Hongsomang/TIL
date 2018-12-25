@@ -5,12 +5,12 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:padding="6dp">
-    <Button
+    <TextView
         android:id="@+id/category_button"
         android:layout_width="50dp"
         android:layout_height="30dp"
         android:background="@drawable/select_category"
         android:text="apple"
         android:textSize="10dp"
-        android:layout_gravity="center"/>
+        android:gravity="center"/>
 </LinearLayout>

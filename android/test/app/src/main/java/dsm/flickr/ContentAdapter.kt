@@ -2,6 +2,7 @@ package dsm.flickr
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,7 @@ class ContentAdapter(var contentList:ArrayList<Content_Item>):RecyclerView.Adapt
 
     }
     override fun getItemCount(): Int {
+        Log.d("getItemCount",contentList.size.toString())
         return contentList.size
     }
     inner class CustomViewHolder(itemView: View?):RecyclerView.ViewHolder(itemView){
@@ -31,8 +33,9 @@ class ContentAdapter(var contentList:ArrayList<Content_Item>):RecyclerView.Adapt
         fun bindItems(content:Content_Item){
             itemView.title.text=content.title
             var image=itemView.image_iv
-            Glide.with(itemView).load(content.image).into(image)
+            Glide.with(itemView).load("https://farm"+content.farm+".staticflickr.com/"+content.server+"/"+content.id+"_"+content.secret+".jpg").into(image)
         }
     }
+
 }
 

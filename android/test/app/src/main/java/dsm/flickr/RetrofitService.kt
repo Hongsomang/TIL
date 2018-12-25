@@ -19,11 +19,11 @@ interface RetrofitService{
     fun getContents(
             @Query("method") method:String,
             @Query("api_key")apiKey:String,
-            @Query("tags")  tags:String,
-            @Query("per_page")perPage:String,
-            @Query("format")  format:String,
-           @Query("nojsoncallback")call_back:String
-
+            @Query("text")text:String,
+            @Query("page")page:String,
+            @Query("format")format:String,
+            @Query("nojsoncallback")call_back:String,
+            @Query("per_page") per_page:String
             /* @Path("page")page:Int,
              @Path("category")category:String*/
     ):Observable<JsonObject>
