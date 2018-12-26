@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_content.view.*
+import kotlinx.android.synthetic.main.item_progress.view.*
 
 /**
  * Created by ghdth on 2018-12-20.
@@ -36,6 +37,13 @@ class ContentAdapter(var contentList:ArrayList<Content_Item>):RecyclerView.Adapt
             Glide.with(itemView).load("https://farm"+content.farm+".staticflickr.com/"+content.server+"/"+content.id+"_"+content.secret+".jpg").into(image)
         }
     }
+   /* fun addData(listItems: ArrayList<Content_Item>) {
+        var size = this.contentList.size
+        this.contentList.addAll(listItems)
+        var sizeNew = this.contentList.size
+        notifyItemRangeChanged(size, sizeNew)
+    }*/
 
 }
+
 

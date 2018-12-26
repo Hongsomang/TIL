@@ -38,6 +38,8 @@ class CategoryAdapter(var categoryList:ArrayList<Category_Item>): RecyclerView.A
             itemView.category_button.text=category.Category_name;
         }
     }
+
+
     /*interface ItemClick{
         fun onClick(view:View,postion:Int)
     }*/
