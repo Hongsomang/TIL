@@ -90,7 +90,7 @@ dependencies{
 
 ### 2.주요 기능
 
-+ RETROFIT &  RXJAVA  이용한 통신
++ Retrofit &  RxJava  이용한 통신
 
   ```
   .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
