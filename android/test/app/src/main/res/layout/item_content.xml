@@ -1,25 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="200dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="1dp">
-    <ImageView
-        android:id="@+id/image_iv"
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/test"
-        android:scaleType="fitXY"
-        />
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:textColor="@color/white"
-        android:text="@string/app_name"
-        android:paddingLeft="10dp"
-        android:gravity="center_vertical"
-        android:background="@color/black_Transparency"
-        android:layout_alignParentBottom="true"/>
-</RelativeLayout>
+        app:cardBackgroundColor="@color/white">
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+           <ImageView
+               android:id="@+id/image_iv"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:scaleType="fitXY"
+               />
+           <TextView
+               android:id="@+id/title"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:textColor="@color/white"
+               android:text="@string/app_name"
+               android:paddingLeft="10dp"
+               android:paddingTop="5dp"
+               android:paddingBottom="5dp"
+               android:gravity="center_vertical"
+               android:background="@color/black_Transparency"
+               android:layout_alignParentBottom="true"/>
+       </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</android.support.constraint.ConstraintLayout>

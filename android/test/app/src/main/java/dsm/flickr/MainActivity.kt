@@ -48,12 +48,14 @@ class MainActivity : AppCompatActivity() {
     private var loading = false
     private var lastPage=false
     private var count = 1
+    private var position_before=0
 
     private lateinit var clickCategory:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
         mCompositeDisposable = CompositeDisposable()
 
@@ -71,6 +73,9 @@ class MainActivity : AppCompatActivity() {
                 RecyclerViewClickListener.OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
                 //setTabLayoutEdge(position)
+                category_rv.findViewHolderForAdapterPosition(position_before).itemView.category_iv.setVisibility(View.GONE)
+                category_rv.findViewHolderForAdapterPosition(position).itemView.category_iv.setVisibility(View.VISIBLE)
+                position_before=position
                 seatch_category(position)
                 contentList.clear()
                 contentAdapter.notifyDataSetChanged()
@@ -85,6 +90,8 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("onCreate::","dfdfsdfsdfsdfsdfsdfsdfsdfsdfdsf")
         lodeJSON(METHOD,API_KEY,"Apple","1",FORMAT,"1","10")
+        category_rv.findViewHolderForAdapterPosition(position_before).itemView.category_iv.setVisibility(View.VISIBLE)
+
         setScollListener("Apple")
 
 
@@ -96,8 +103,10 @@ class MainActivity : AppCompatActivity() {
 
     }*/
     private fun seatch_category(position:Int){
+
+
         category_tv.text=categoryList[position].Category_name
-        Toast.makeText(this@MainActivity,categoryList[position].Category_name,Toast.LENGTH_SHORT).show()
+        Toast.makeText(this@MainActivity,categoryList[position].Category_name+" "+position,Toast.LENGTH_SHORT).show()
         lodeJSON(METHOD,API_KEY,categoryList[position].Category_name,"1",FORMAT,"1","10")
         Log.d("categoryList_name",categoryList[position].Category_name)
         setScollListener(categoryList[position].Category_name)

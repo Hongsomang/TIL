@@ -24,9 +24,9 @@ class CategoryAdapter(var categoryList:ArrayList<Category_Item>): RecyclerView.A
       /*  if(itemClick!=null){
             holder?.itemView?.setOnClickListener{v->itemClick?.onClick(v,position)}
         }*/
-        if (position==0){
-            holder.itemView.category_button.setBackgroundResource(R.drawable.button_select)
-        }
+
+
+
     }
 
 
@@ -38,7 +38,6 @@ class CategoryAdapter(var categoryList:ArrayList<Category_Item>): RecyclerView.A
             itemView.category_button.text=category.Category_name;
         }
     }
-
 
     /*interface ItemClick{
         fun onClick(view:View,postion:Int)
