@@ -1,10 +1,16 @@
 ##Flickr api를 이용한 사진 검색 어플리케이션
 
--flickr api를 이용하여 원하는 category의 사진을 가져오는 어플리케이션이다, category를 총12개로 이미로 지정해했다.
+-flickr api를 이용하여 원하는 category의 사진을 가져오는 어플리케이션이다, category를 총12개로 지정했다.
 
-### 1.준비
 
-준비물: sdk 19이상의 안드로이드 폰, android Studio, flickr api_key
+
+###1.준비
+
+#### 준비물
+
+ sdk 19이상의 안드로이드 폰, android Studio, flickr api_key
+
+
 
 ####API_URL(예시)
 
@@ -24,7 +30,7 @@ https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
 
 ####프로젝트에 코틀린 추가하기
 
-코틀린을 사용하기 위해서 ``` Gradle Scripts> build.gradle(Project:test)```에서 아래 내용을 추가해준다.
+코틀린을 사용하기 위해서 ``` Gradle Scripts> build.gradle(Project:test)```에서 아래 내용을 추가해 준다.
 
 ```
 buildscript{
@@ -75,6 +81,66 @@ dependencies{
  
 }
 ```
+
+
+
+### 2.주요 기능
+
++ RETROFIT &  RXJAVA  이용한 통신
+
+  ```
+  .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+  ```
+
+  Retrofit과 함께 RxJava Observable을 사용하려면 새로운 Adapter Factory 구현을 사용해야한다. addCallAdapterFactory () 메서드를 사용하여 수행된다.
+
+  ```
+  mCompositeDisposable?.add(retrofitService.getContents(method,api,text,page,format,callback,per_page)
+              .observeOn(AndroidSchedulers.mainThread())
+              .subscribeOn(Schedulers.io())
+              .subscribe(this::bindContent, this::bindError))
+  }
+  ```
+
+  observeOnd 과 subscribeOn은 스레드를 정의와 결과를 처리하고 네트워크 작업을 수행해야한다.
+
+  또, 결과가 메인스레드에 전달되어 처리되어야 하고, 네트워크 작업는 IO스레드에서 처리되어야된다고 정의했다.  bindContent는 성공했을 때 bindError는 실패 했을 때 실행 된다.
+
++ 머티리얼 디자인 적용 
+
+  activity_main.xml 형태
+
+  ```
+  <CoordinatorLayout>
+  	<AppBarLayout>
+  		<Toolbar app:layout_scrollFlags="scroll|enterAlways"></Toolbar>
+  		<RecyclerView>
+  	</AppBarLayout>
+  	<NestedScrollView>
+  	</NestedScrollView>
+  </CoordinatorLayout>
+  ```
+
+  아래로 스크롤하면 툴바가 사라지고 위로 스크롤하면 다시  툴바가 보인다.
+
+  ​
+
++ Category 별로 사진 보여주기 
+
+  ```
+          
+          
+  category_rv.addOnItemTouchListener(RecyclerViewClickListener(this, category_rv, object :
+  RecyclerViewClickListener.OnItemClickListener {
+
+  	override fun onItemClick(view: View, position: Int) {
+  				        		      				        		     lodeJSON(METHOD,API_KEY,categoryList[position].Category_name,"1",FORMAT,"1","10")
+
+  	}
+  }))
+  ```
+
+  ClickListener 인터페이스를 만들어 리사클러뷰를 클릭할 때 마다 클리한 position을 받아와 ArrayList에서 Position에 맞는 category이름을 불러와 통신한다.
 
 
 
