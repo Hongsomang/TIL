@@ -121,7 +121,7 @@ dependencies{
   </CoordinatorLayout>
   ```
 
-  아래로 스크롤하면 툴바가 사라지고 위로 스크롤하면 다시  툴바가 보인다.
+   ```app:layout_scrollFlags="scroll|enterAlways```를 하여 아래로 스크롤하면 툴바가 사라지고 위로 스크롤하면 다시 툴바가 보인다.
 
   ​
 
@@ -142,9 +142,33 @@ dependencies{
 
   ClickListener 인터페이스를 만들어 리사클러뷰를 클릭할 때 마다 클리한 position을 받아와 ArrayList에서 Position에 맞는 category이름을 불러와 통신한다.
 
++ 사진보여주기
 
+  ```
+  var photos=res.get("photos").asJsonObject
+  var photo=photos.get("photo").asJsonArray
 
+  for(count in 0 until photo.size()){
+  var photoList=photo.get(count).asJsonObject
 
+  var id=photoList.get("id").asString
+  var secret=photoList.get("secret").asString
+  var server=photoList.get("server").asString
+  var title=photoList.get("title").asString
+  var farm=photoList.get("farm").asString
+
+  contentList.add(Content_Item(farm,server,id,secret,title))
+  ```
+
+   JsonObject형태로 오는데  id, secret, server, farm, title만 가져와 Cotent_item 에 넣는다.
+
+  ```
+  Glide.with(itemView).load("https://farm"+content.farm+".staticflickr.com/"+content.server+"/"+content.id+"_"+content.secret+".jpg").into(image)
+  ```
+
+  Content_item에 넣는 데이터를 필요한 자리에 넣어준다.
+
+  ​
 
 
 

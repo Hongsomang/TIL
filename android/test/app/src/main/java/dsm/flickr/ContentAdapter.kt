@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_content.view.*
-import kotlinx.android.synthetic.main.item_progress.view.*
 
 /**
  * Created by ghdth on 2018-12-20.
