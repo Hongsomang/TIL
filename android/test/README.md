@@ -1,5 +1,7 @@
 ##Flickr api를 이용한 사진 검색 어플리케이션
 
+
+
 -flickr api를 이용하여 원하는 category의 사진을 가져오는 어플리케이션이다, category를 총12개로 지정했다.
 
 
