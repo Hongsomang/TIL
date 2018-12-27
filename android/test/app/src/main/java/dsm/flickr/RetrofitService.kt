@@ -24,8 +24,7 @@ interface RetrofitService{
             @Query("format")format:String,
             @Query("nojsoncallback")call_back:String,
             @Query("per_page") per_page:String
-            /* @Path("page")page:Int,
-             @Path("category")category:String*/
+
     ):Observable<JsonObject>
 
 }

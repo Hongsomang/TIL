@@ -24,9 +24,9 @@ class ContentAdapter(var contentList:ArrayList<Content_Item>):RecyclerView.Adapt
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         holder.bindItems(contentList[position])
 
+
     }
     override fun getItemCount(): Int {
-        Log.d("getItemCount",contentList.size.toString())
         return contentList.size
     }
     inner class CustomViewHolder(itemView: View?):RecyclerView.ViewHolder(itemView){
@@ -37,12 +37,7 @@ class ContentAdapter(var contentList:ArrayList<Content_Item>):RecyclerView.Adapt
             Glide.with(itemView).load("https://farm"+content.farm+".staticflickr.com/"+content.server+"/"+content.id+"_"+content.secret+".jpg").into(image)
         }
     }
-   /* fun addData(listItems: ArrayList<Content_Item>) {
-        var size = this.contentList.size
-        this.contentList.addAll(listItems)
-        var sizeNew = this.contentList.size
-        notifyItemRangeChanged(size, sizeNew)
-    }*/
+
 
 }
 

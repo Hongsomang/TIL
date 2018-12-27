@@ -46,11 +46,9 @@ class MainActivity : AppCompatActivity() {
     private var mCompositeDisposable: CompositeDisposable? = null
 
     private var loading = false
-    private var lastPage=false
     private var count = 1
     private var position_before=0
 
-    private lateinit var clickCategory:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,27 +57,26 @@ class MainActivity : AppCompatActivity() {
 
         mCompositeDisposable = CompositeDisposable()
 
-        var categoryAdapter=CategoryAdapter(categoryList)
 
         var category= arrayOf("Apple","Dog","Banana","Cat","bag","doll","Soccer","chocolate","Korea","Pizza","Chicken","flower")
         for(count in category.indices){
             categoryList.add(Category_Item(category.get(count)))
         }
 
+        var categoryAdapter=CategoryAdapter(categoryList)
         category_rv.layoutManager=LinearLayoutManager(this,LinearLayout.HORIZONTAL,false)
         category_rv.adapter=categoryAdapter
 
         category_rv.addOnItemTouchListener(RecyclerViewClickListener(this, category_rv, object :
                 RecyclerViewClickListener.OnItemClickListener {
+
             override fun onItemClick(view: View, position: Int) {
-                //setTabLayoutEdge(position)
                 category_rv.findViewHolderForAdapterPosition(position_before).itemView.category_iv.setVisibility(View.GONE)
                 category_rv.findViewHolderForAdapterPosition(position).itemView.category_iv.setVisibility(View.VISIBLE)
                 position_before=position
                 seatch_category(position)
                 contentList.clear()
                 contentAdapter.notifyDataSetChanged()
-                Log.d("click","dfdf")
             }
 
             override fun onLongItemClick(view: View?, position: Int) {
@@ -88,35 +85,25 @@ class MainActivity : AppCompatActivity() {
         }))
 
 
-        Log.d("onCreate::","dfdfsdfsdfsdfsdfsdfsdfsdfsdfdsf")
         lodeJSON(METHOD,API_KEY,"Apple","1",FORMAT,"1","10")
-        category_rv.findViewHolderForAdapterPosition(position_before).itemView.category_iv.setVisibility(View.VISIBLE)
 
         setScollListener("Apple")
 
 
     }
-   /* private fun getMoreItems(){
-        count+=1
-        contentAdapter.addData(contentList)
-      //  lodeJSON(METHOD,API_KEY,"Apple",count.toString(),FORMAT,"1"/*"10"*/)
 
-    }*/
     private fun seatch_category(position:Int){
-
-
         category_tv.text=categoryList[position].Category_name
-        Toast.makeText(this@MainActivity,categoryList[position].Category_name+" "+position,Toast.LENGTH_SHORT).show()
         lodeJSON(METHOD,API_KEY,categoryList[position].Category_name,"1",FORMAT,"1","10")
-        Log.d("categoryList_name",categoryList[position].Category_name)
+
         setScollListener(categoryList[position].Category_name)
     }
 
     private fun lodeJSON(method:String,api:String,text:String,page:String,format:String,callback:String,per_page:String){
-        Log.d("lodeJSON","dfsfsdfsdfsdfsdf")
         val gson=GsonBuilder()
                 .setLenient()
                 .create()
+
         val retrofitService= Retrofit.Builder()
                 .baseUrl(SEARCH_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
@@ -146,36 +133,18 @@ class MainActivity : AppCompatActivity() {
             contentList.add(Content_Item(farm,server,id,secret,title))
         }
         setAdapter()
-        //contentAdapter.addAll(contentList)
-      /*  content_rv.addOnScrollListener(object :PaginationScrollListener(layoutManager = LinearLayoutManager(this)){
-            override fun isLastPage(): Boolean {
-                return lastPage
-            }
 
-            override fun isLoading(): Boolean {
-                return loading
-            }
-
-            override fun loadMoreItems() {
-                loading=true
-                getMoreItems()
-            }
-
-        })*/
     }
 
     private fun bindError(error: Throwable){
+        Toast.makeText(this,"사진을 받아 올 수 없습니다.",Toast.LENGTH_LONG).show()
         Log.d("binderror",error.toString())
 
     }
 
     private fun setAdapter(){
-        Log.d("setAdapter","dfsfsdfsdfsdfsdf")
         contentAdapter= ContentAdapter(contentList)
-        //contentAdapter.setLinearLayoutManager(LinearLayoutManager(this))
-        //contentAdapter.setRecyclerView(content_rv)
         content_rv.layoutManager=linearLayoutManager
-
         content_rv.adapter=contentAdapter
         content_rv.setNestedScrollingEnabled(false);
 
@@ -183,8 +152,7 @@ class MainActivity : AppCompatActivity() {
             loading=false
         } else{
             loading=true
-            Log.d("100넘음","ㄹㄴ알알ㄴ러ㅏ")
-            Toast.makeText(this@MainActivity,"피드를 받을 수 없습니다.",Toast.LENGTH_LONG).show()
+            Toast.makeText(this@MainActivity,"사진을 100개 이상 받을 수 없습니다.",Toast.LENGTH_LONG).show()
         }
 
 
@@ -193,30 +161,22 @@ class MainActivity : AppCompatActivity() {
         content_rv.addOnScrollListener(object :RecyclerView.OnScrollListener(){
             override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
-                Log.d("scroll111111111111111","gkgkgkgkgkgkggkggkgk")
+
                 val visibleItemCount=linearLayoutManager.childCount
                 val totalItemCount=linearLayoutManager.itemCount
                 val firstVisible=linearLayoutManager.findFirstVisibleItemPosition()
 
-                Log.d("onScrollListener",visibleItemCount.toString()+" "+totalItemCount.toString()+" "+firstVisible.toString())
                 if(!loading&&(visibleItemCount + firstVisible) >= totalItemCount){
 
                        loading=true
                        count+=1
-                       Log.d("ifiifififififi","dfsfosfiwjfoewjfwoifj")
                        lodeJSON(METHOD,API_KEY,category,count.toString(),FORMAT,"1","10")
-
-
-
-                }else{
-                    Log.d("else:;;;:;","dfdfsdfsfsdf")
                 }
             }
         })
     }
 
     override fun onDestroy() {
-        Log.d("onDestory","dfsfsdfsdfsdfsdf")
 
         super.onDestroy()
         mCompositeDisposable?.clear()

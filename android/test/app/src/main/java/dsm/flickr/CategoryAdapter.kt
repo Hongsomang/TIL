@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.item_category.view.*
  * Created by ghdth on 2018-12-20.
  */
 class CategoryAdapter(var categoryList:ArrayList<Category_Item>): RecyclerView.Adapter<CategoryAdapter.CustomViewHolder>() {
- //  var itemClick : ItemClick?= null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         val view=LayoutInflater.from(parent.context).inflate(R.layout.item_category,parent,false)
@@ -21,11 +20,13 @@ class CategoryAdapter(var categoryList:ArrayList<Category_Item>): RecyclerView.A
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         holder.bindItems(categoryList[position])
-      /*  if(itemClick!=null){
-            holder?.itemView?.setOnClickListener{v->itemClick?.onClick(v,position)}
-        }*/
 
+        if(position==0){
+            holder.itemView.category_iv.setVisibility(View.VISIBLE)
+        }else{
+            holder.itemView.category_iv.setVisibility(View.GONE)
 
+        }
 
     }
 
@@ -39,9 +40,6 @@ class CategoryAdapter(var categoryList:ArrayList<Category_Item>): RecyclerView.A
         }
     }
 
-    /*interface ItemClick{
-        fun onClick(view:View,postion:Int)
-    }*/
 
 
 }
