@@ -168,7 +168,7 @@ dependencies{
   Glide.with(itemView).load("https://farm"+content.farm+".staticflickr.com/"+content.server+"/"+content.id+"_"+content.secret+".jpg").into(image)
   ```
 
-  Content_item에 넣는 데이터를 필요한 자리에 넣어준다.
+  Content_item에서 가져온 데이터를 필요한 자리에 넣어준다.
 
   ​
 
