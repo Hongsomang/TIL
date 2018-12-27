@@ -20,13 +20,15 @@
 https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=2f904f1669187c7860cae324d891ccd3&text=apple&page=2&per_page=10&format=json&nojsoncallback=1
 ```
 
-
+이 url를 통해 JsonObject 형태의 사진 데이터을 가져온다
 
 ####Photo_URL
 
 ```
 https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
 ```
+
+이 url를 통해 사진을 화면에 보여준다.
 
 
 
